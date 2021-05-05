@@ -1,0 +1,17 @@
+@import './styles/login.css';
+@import './styles/board.css';
+@import './styles/modal.css';
+
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap");
+
+* {
+  font-family: "Rubik";
+  box-sizing: border-box;
+  font-weight: 500;
+}
+
+body {
+  background-image: url(./assets/logo.png);
+  background-repeat: no-repeat;
+  padding-left: 68px;
+}

@@ -1,0 +1,126 @@
+.board-page h3 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.board-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.new-task {
+    display: flex;
+    align-items: center;
+}
+
+.new-task img{
+    height: 24px;
+    padding-right: 10px;
+}
+
+/* todos */
+.todo-list-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.todo-list-item0 {
+    width: 306px;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #FFF9FB;
+    border: 1px solid #EB2F96;
+}
+
+.todo-list-item1 {
+    width: 306px;
+    padding: 12px;
+    background: #FCFAFD;
+    border: 1px solid #7B61FF;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+button {
+    box-sizing: border-box;
+    border-radius: 2px;
+}
+
+.todo-list-item0 button {
+    background: #FFF0F6;
+    border: 1px solid #FFADD2;
+}
+
+.todo-list-item1 button {
+    background: #F9F0FF;
+    border: 1px solid #D3ADF7;
+}
+
+.todo-list-item2 button {
+    background: #F0F5FF;
+    border: 1px solid #ADC6FF;
+}
+
+.todo-list-item3 button {
+    background: #F6FFED;
+    border: 1px solid #B7EB8F;
+}
+
+.board0 {
+    background: #FFFFFF;
+    border: 1px solid #E4E4E8;
+    padding: 12px;
+}
+
+.board1 {
+    background: #FFFFFF;
+    border: 1px solid #E4E4E8;
+    padding: 12px;
+}
+
+.card-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-detail img {
+    width: 24px;
+    height: 24px;
+}
+
+/* dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content p {
+    color: black;
+    padding: 0px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-click .dropdown-content {
+    display: block;
+}
+
+.dropbtn:hover {
+    cursor: pointer;
+}
+
+.dropdown-content p:hover {
+    cursor: pointer;
+}
