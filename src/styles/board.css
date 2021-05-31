@@ -9,6 +9,11 @@
     justify-content: space-around;
 }
 
+.board-box {
+    display: flex;
+    flex-direction: row;
+}
+
 .new-task {
     display: flex;
     align-items: center;
@@ -43,41 +48,20 @@
     font-size: 14px;
 }
 
-button {
+.board button {
     box-sizing: border-box;
     border-radius: 2px;
-}
-
-.todo-list-item0 button {
     background: #FFF0F6;
     border: 1px solid #FFADD2;
+    padding: 10px 24px;
 }
 
-.todo-list-item1 button {
-    background: #F9F0FF;
-    border: 1px solid #D3ADF7;
-}
-
-.todo-list-item2 button {
-    background: #F0F5FF;
-    border: 1px solid #ADC6FF;
-}
-
-.todo-list-item3 button {
-    background: #F6FFED;
-    border: 1px solid #B7EB8F;
-}
-
-.board0 {
+.board {
     background: #FFFFFF;
     border: 1px solid #E4E4E8;
-    padding: 12px;
-}
-
-.board1 {
-    background: #FFFFFF;
-    border: 1px solid #E4E4E8;
-    padding: 12px;
+    padding: 12px 0;
+    margin: 2%;
+    width: 25%;
 }
 
 .card-detail {

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Board = (props) => {
-    const {className, id, children, boardClassName} = props;
+    const {className, id, children, boardClassName, idClassName, groupButton, description, imgBoard} = props;
     // dnd
     const drop = e => {
         e.preventDefault();
@@ -29,7 +29,17 @@ const Board = (props) => {
             <div 
                 className={boardClassName}
             >
+            <div className='todo-list-container'>
+                    <div className={idClassName}>
+                        {groupButton}
+                        <p>{description}</p>
                 {children}
+                <div className='new-task'>
+                            <img src={imgBoard} alt='' />
+                            <p>New Task</p>
+                        </div>
+                    </div>
+            </div>
             </div>
         </div>
     )

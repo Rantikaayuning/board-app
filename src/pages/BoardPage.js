@@ -11,81 +11,105 @@ import { DeleteModal, TaskModal } from '../components/Modal';
 
 const BoardPage = (props) => {
     const [dropDown, setDropDown] = useState(false)
+    const [deleteModal, setDeleteModal] = useState(false)
+    const [createTaskModal, setCreateTaskModal] = useState(false)
+    const [deleteClass, setDeleteClass] = useState('modal')
+    const [editClass, setEditClass] = useState('modal')
+
     const { todos, items } = useSelector((state) => state.board);
     const dispatch = useDispatch();
 
-    useEffect((id) => {
+    useEffect(() => {
         dispatch(getTodos())
         if(todos) {
             dispatch(getItems(todos.map(item => item.id)))
         }
-    }, [dispatch])
+    }, [dispatch, todos])
 
     const handleDropdown = () => {
         setDropDown(!dropDown)
     }
 
-    console.log("result", items)
-    console.log("result", todos)
+    const handleDeleteModal = () => {
+        setDeleteModal(true)
+        setDeleteClass('modal-open')
+    }
+
+    const handleEditModal = () => {
+        setDeleteModal(true)
+        setDeleteClass('modal-open')
+    }
+
+    const handleCreateTaskModal = () => {
+        setCreateTaskModal(true)
+    }
+
+    // console.log("result", items)
+    // console.log("result", todos)
 
     return (
         <div className='board-page'>
             <h3>Product Roadmap</h3>
-            <div className='todo-list-container'>
-                {todos !== null && todos.map((item, id) => (
-                    <div className={`todo-list-item${id}`} key={id}>
-                        <GroupTaskButton buttonName={item.title} />
-                        <p>{item.description}</p>
-                        <Board 
-                            className={`board${id}`}
-                            id={item.id}
-                        >
-                            <Card
-                                id={id} 
-                                boardClassName='card'
-                                draggable='true'
-                            >
-                                <div className='card-item' key={id}>
-                                    <p>{item.title}</p>
-                                    <div className='card-detail' key={id}>
-                                        <p>progress bar</p>
-                                        {/* <img src={EditCard} alt='' className='dropdown' /> */}
-                                        <DropDown 
-                                            dropDownImg={EditCard}
-                                            itemThree='Edit'
-                                            itemFour='Delete'
-                                            onClick={handleDropdown}
-                                            className={dropDown ? 'dropdown-click' : 'dropdown'}
-                                            key={id}
-                                        />
-                                    </div>
-                                </div>
-                            </Card>
-                        </Board>
-                        <div className='new-task'>
-                            <img src={PlusCircle} alt='' />
-                            <p>New Task</p>
+            <div className='board-box'>
+            {todos !== null && todos.map((item, id) => (
+                <Board 
+                    className={`board ${id}`}
+                    id={item.id}
+                    idClassname={`todo-list-item${id}`}
+                    groupButton={<GroupTaskButton buttonName={item.title} />}
+                    description={item.description}
+                    imgBoard={PlusCircle}
+                    boardContentClass='todo-list-container'
+                    newTaskClass='boardContentClass'
+                >
+                    <Card
+                        id={id} 
+                        boardClassName='card'
+                        draggable='true'
+                    >
+                        <div className='card-item' key={id}>
+                            <p>{item.title}</p>
+                            <div className='card-detail' key={item.id}>
+                                <p>progress bar</p>
+                                <DropDown 
+                                    dropDownImg={EditCard}
+                                    onClick={() => handleDropdown()}
+                                    itemThree='Edit'
+                                    itemFour='Delete'
+                                    itemThreeClick={handleCreateTaskModal}
+                                    itemFourClick={handleDeleteModal}
+                                    className={dropDown ? 'dropdown-click' : 'dropdown'}
+                                    key={id}
+                                />
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    </Card>
+                </Board>
+            ))}
             </div>
+
             {/* modal */}
-            <DeleteModal 
+            <div className={deleteClass}>
+                <DeleteModal 
                 modalTitle='Delete Task'
                 firstText='Are you sure want to delete this task?'
                 secondText="Your action can't be reverted"
-            />
-            <TaskModal
-                modalTitle='Create Task'
-                handleSubmit={() => console.log('submit')}
-                taskName='Task Name'
-                handleChange={() => console.log('change')}
-                progress='Progress'
-                handleCancel={() => console.log('cancel')}
-                handleDone={() => console.log('done')}
-                cancelText='Cancel'
-                doneText='Create'
-            />
+                handleCancel={() => setDeleteClass('modal')}
+                />
+            </div>
+            <div className={editClass}>
+                <TaskModal
+                    modalTitle='Create Task'
+                    handleSubmit={() => console.log('submit')}
+                    taskName='Task Name'
+                    handleChange={() => console.log('change')}
+                    progress='Progress'
+                    handleCancel={() => console.log('cancel')}
+                    handleDone={() => console.log('done')}
+                    cancelText='Cancel'
+                    doneText='Create'
+                />
+            </div>
         </div>
     )
 }
